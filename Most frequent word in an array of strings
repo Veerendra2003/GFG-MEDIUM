@@ -1,0 +1,89 @@
+/*
+Most frequent word in an array of strings
+MediumAccuracy: 22.13%Submissions: 43K+Points: 4
+Lamp
+Don't Miss Out on the Chance to Work with Leading Companies! Visit the GFG Job Fair Now!  
+
+Given an array arr containing N words consisting of lowercase characters. Your task is to find the most frequent word in the array. If multiple words have same frequency, then print the word whose first occurence occurs last in the array as compared to the other strings with same frequency.
+
+Example 1:
+
+Input:
+N = 3
+arr[] = {geeks,for,geeks}
+Output: geeks
+Explanation: "geeks" comes 2 times.
+Example 2:
+
+Input:
+N = 2
+arr[] = {hello,world}
+Output: world
+Explanation: "hello" and "world" both
+have 1 frequency. We print world as
+its first occurence comes last in the
+input array.
+Your Task:
+Complete mostFrequentWord function which takes array of strings and its length as arguments and returns the most frequent word. The printing is done by the driver code.
+
+Expected Time Complexity: O(N * WORD_LEN).
+Expected Auxiliary Space: O(N * WORD_LEN).
+
+Constraints:
+1 <= N <= 50000
+1 <= |each string| <= 50
+Sum of length of every string does not exceed 5*105
+*/
+=========================================================================================================================================================
+SOLUTION IN JAVA:
+===================
+//{ Driver Code Starts
+//Initial Template for Java
+
+/*package whatever //do not write package name here */
+
+import java.io.*;
+import java.util.*;
+class GFG {
+	public static void main(String[] args) throws IOException{
+		Scanner sc=new Scanner(System.in);
+		
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+		    int n=sc.nextInt();
+		    sc.nextLine();
+		    Solution obj = new Solution();
+		    String arr[]=sc.nextLine().split(" ");
+		    System.out.println(obj.mostFrequentWord(arr, n));
+		    
+		}
+	}
+}
+
+// } Driver Code Ends
+//User function Template for Java
+
+
+class Solution
+{
+    //Function to find most frequent word in an array of strings.
+    public String mostFrequentWord(String arr[],int n)
+    {
+        // code here
+        Map<String,Integer> mp = new HashMap<>();
+        String ans = "";
+        for(int i=n-1; i>=0; i--){
+            String s = arr[i];
+            mp.put(s,mp.getOrDefault(s,0)+1);
+            if(mp.get(s)>mp.getOrDefault(ans,0))
+            ans = s;
+        }
+        return ans;
+    }
+
+}
+
+
+//{ Driver Code Starts.
+// } Driver Code Ends
