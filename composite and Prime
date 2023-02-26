@@ -1,0 +1,92 @@
+/*
+omposite and Prime
+MediumAccuracy: 30.99%Submissions: 26K+Points: 4
+Lamp
+Don't Miss Out on the Chance to Work with Leading Companies! Visit the GFG Job Fair Now!  
+
+Given two integers L and R find (number of composites - number of primes) between the range L and R (both inclusive).
+
+Example 1:
+
+Input: L = 4, R = 6
+Output: 1
+Explanation: Composite no. are 4 and 6.
+And prime is 5.
+
+Example 2:
+
+Input: L = 4, R = 4
+Output: 1
+Explanation: There is no prime no. in [L,R]
+ 
+
+Your Task:
+You don't need to read or print anything. Your task is to complete the function Count() which takes L and R as input parameter and returns difference between no. of composites and primes between [L,R].
+ 
+
+Expected Time Complexity: O(nlog(n)) where n = R - L + 1
+Expected Space Complexity: O(n)
+ 
+
+Constraints:
+1 <= L <= R <= 105 
+*/
+=====================================================================================================================================
+SOLUTION IN JAVA:
+====================
+//{ Driver Code Starts
+//Initial Template for Java
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+{
+    public static void main(String[] args) throws IOException
+    {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine().trim());
+        while(T-->0)
+        {
+            String[] S = br.readLine().split(" ");
+            int L = Integer.parseInt(S[0]);
+            int R = Integer.parseInt(S[1]);
+            Solution ob = new Solution();
+            int ans = ob.Count(L, R);
+            System.out.println(ans);
+        }
+    }
+}
+
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Solution
+{
+    public int Count(int L, int R)
+    {
+        // code here
+        int countPrime = 0;
+        for(int i=L; i<=R; i++){
+            if(isPrime(i)==true)
+            countPrime++;
+        }
+        int countComposite = (R-L)+1 -countPrime;
+        if(L==1)
+        return countComposite-countPrime-1;
+        else
+        return countComposite-countPrime;
+    }
+    
+    public  boolean isPrime(int n){
+       if(n==1)
+       return false;
+       for(int i=2; i<=Math.sqrt(n); i++){
+           if(n%i==0)
+           return false;
+       }
+       return true;
+    }
+}
